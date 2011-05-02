@@ -3,7 +3,11 @@ Easily generate [facebook opengraph](http://developers.facebook.com/docs/opengra
 
 ### Note:
 
-This version works only with Rails 3.x, and it supports like button/send button and facebook comments
+This version it is a fork of (https://github.com/capotej/has_opengraph).
+It works only with Rails 3.x (automatically safe_html!), and it supports:
+  * facebook like button
+  * facebook send button
+  * facebook comments
 
 ### Installation
 From your rails directory
@@ -51,6 +55,8 @@ From your rails directory
   <div class="movie-comments">
     <span><%= @movie.like_button(:width=>300, :show_faces => false, :layout => "button_count", :action => "recommend", :font=>"tahoma") %></span>
   </div>
+  
+Parameters:
 
 :width 
   The width of the like box, in pixel. Default: 450.
@@ -72,6 +78,19 @@ From your rails directory
     <span><%= @movie.like_button(:send_button => true) %></span>
   </div>
 
+### Add facebook comments
+  <div class="movie-comments">
+    <span><%= @movie.comments( :width=>600 ) %></span>
+  </div>
+  
+Parameters:
+:width 
+  The width of the like box, in pixel. Default: 450.
+:num_posts
+  The number of comments to display below the comments box. Default: 3.
+:colorscheme
+  The type of color scheme used to render the like box. Allowed values: "dark", "light".Default: "light"
+  
 ### License
 
 Copyright (c) 2010 Julio Capote, released under the MIT license

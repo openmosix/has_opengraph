@@ -43,8 +43,9 @@ module HasOpenGraph
     end
     
     def like_button(opts = {})
-      url = self.class.opengraph[:url]
-      
+      url = get_url
+      return unless url
+
       width = opts[:width] || 450
       layout_type = opts[:layout] || "standard"
       show_faces = (opts.has_key? :show_faces) ? opts[:show_faces] : true
@@ -53,22 +54,32 @@ module HasOpenGraph
       action = opts[:action] || "like"
       colorscheme = opts[:colorscheme] || "light"
 
-      if url
-        button = ''
-        if url.class == Symbol
-          nurl = self.send(url)
-        else
-          nurl = url
-        end
-        es_url = CGI.escape(nurl)
-        
-        button = "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:like href=\"#{es_url}\" action=\"#{action}\" colorscheme=\"#{colorscheme}\" send=\"#{send_button}\" layout=\"#{layout_type}\" width=\"#{width}\" show_faces=\"#{show_faces}\" font=\"#{font}\"></fb:like>"
-        button.html_safe
-      end
+      "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:like href=\"#{url}\" action=\"#{action}\" colorscheme=\"#{colorscheme}\" send=\"#{send_button}\" layout=\"#{layout_type}\" width=\"#{width}\" show_faces=\"#{show_faces}\" font=\"#{font}\"></fb:like>".html_safe
     end
 
+    def comments(opts = {})
+      url = get_url
+      return unless url
 
+      num_posts = opts[:num_posts] || 3
+      width = opts[:width] || 450        
+      colorscheme = opts[:colorscheme] || "light"
 
+      "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:comments href=\"#{url}\" num_posts=\"#{num_posts}\" colorscheme=\"#{colorscheme}\" width=\"#{width}\"></fb:comments>".html_safe
+    end
+
+  protected    
+    def get_url
+      url = self.class.opengraph[:url]
+      return unless url
+
+      if url.class == Symbol
+        nurl = self.send(url)
+      else
+        nurl = url
+      end
+      es_url = CGI.escape(nurl)
+    end
   end
 
 end

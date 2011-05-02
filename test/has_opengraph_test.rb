@@ -35,5 +35,11 @@ class HasOpengraphTest < Test::Unit::TestCase
     example = "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:like href=\"http%3A%2F%2Fmoviesite.com%2Fmovies%2Funder-siege-2\" action=\"like\" colorscheme=\"light\" send=\"false\" layout=\"standard\" width=\"450\" show_faces=\"true\" font=\"\"></fb:like>"
     assert_equal example, @movie.like_button
   end
+  
+  def test_comments
+    example = "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:comments href=\"http%3A%2F%2Fmoviesite.com%2Fmovies%2Funder-siege-2\" num_posts=\"3\" colorscheme=\"light\" width=\"450\"></fb:comments>"
+  
+    assert_equal example, @movie.like_button
+  end
 
 end
