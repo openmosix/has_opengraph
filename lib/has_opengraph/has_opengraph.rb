@@ -42,8 +42,11 @@ module HasOpenGraph
       str
     end
     
-    def like_button
+    def like_button(opts = {})
       url = self.class.opengraph[:url]
+      
+      width = opts[:witdh] || 450
+      
       if url
         button = ''
         if url.class == Symbol
@@ -52,7 +55,7 @@ module HasOpenGraph
           nurl = url
         end
         es_url = CGI.escape(nurl)
-        button = '<iframe src="http://www.facebook.com/plugins/like.php?href=' << es_url << '&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:px"></iframe>'
+        button = '<iframe src="http://www.facebook.com/plugins/like.php?href=' << es_url << '&amp;layout=standard&amp;show_faces=true&amp;width='+ width +'&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" class="facebook-like-frame"></iframe>'
         button
       end
     end

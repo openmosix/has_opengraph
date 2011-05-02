@@ -1,4 +1,4 @@
-require 'test_helper'
+ require 'test_helper'
 
 class HasOpengraphTest < Test::Unit::TestCase
   load_schema
@@ -32,10 +32,8 @@ class HasOpengraphTest < Test::Unit::TestCase
   end
 
   def test_like_button
-    example = '<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmoviesite.com%2Fmovies%2Funder-siege-2&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:px"></iframe>'
+    example = '<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmoviesite.com%2Fmovies%2Funder-siege-2&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" class="facebook-like-frame"></iframe>'
     assert_equal example, @movie.like_button
   end
-
-
 
 end
