@@ -32,7 +32,7 @@ class HasOpengraphTest < Test::Unit::TestCase
   end
 
   def test_like_button
-    example = '<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmoviesite.com%2Fmovies%2Funder-siege-2&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" class="facebook-like-frame"></iframe>'
+    example = "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:like href=\"http%3A%2F%2Fmoviesite.com%2Fmovies%2Funder-siege-2\" action=\"like\" colorscheme=\"light\" send=\"false\" layout=\"standard\" width=\"450\" show_faces=\"true\" font=\"\"></fb:like>"
     assert_equal example, @movie.like_button
   end
 

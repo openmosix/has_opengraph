@@ -45,8 +45,14 @@ module HasOpenGraph
     def like_button(opts = {})
       url = self.class.opengraph[:url]
       
-      width = opts[:witdh] || 450
-      
+      width = opts[:width] || 450
+      layout_type = opts[:layout] || "standard"
+      show_faces = (opts.has_key? :show_faces) ? opts[:show_faces] : true
+      send_button = (opts.has_key? :send_button) ? opts[:send_button] : false
+      font = opts[:font] || ""
+      action = opts[:action] || "like"
+      colorscheme = opts[:colorscheme] || "light"
+
       if url
         button = ''
         if url.class == Symbol
@@ -55,8 +61,9 @@ module HasOpenGraph
           nurl = url
         end
         es_url = CGI.escape(nurl)
-        button = '<iframe src="http://www.facebook.com/plugins/like.php?href=' << es_url << '&amp;layout=standard&amp;show_faces=true&amp;width='+ width +'&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" class="facebook-like-frame"></iframe>'
-        button
+        
+        button = "<script src=\"http://connect.facebook.net/en_US/all.js#xfbml=1\"></script><fb:like href=\"#{es_url}\" action=\"#{action}\" colorscheme=\"#{colorscheme}\" send=\"#{send_button}\" layout=\"#{layout_type}\" width=\"#{width}\" show_faces=\"#{show_faces}\" font=\"#{font}\"></fb:like>"
+        button.html_safe
       end
     end
 
