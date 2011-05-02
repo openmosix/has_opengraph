@@ -56,7 +56,7 @@ From your rails directory
     <div class="movie-comments">
       <span><%= @movie.like_button(:width=>300, :show_faces => false, :layout => "button_count", :action => "recommend", :font=>"tahoma") %></span>
     </div>
-  
+
     Parameters:
 
     :width 
@@ -83,7 +83,7 @@ From your rails directory
     <div class="movie-comments">
       <span><%= @movie.comments( :width=>600 ) %></span>
     </div>
-  
+
     Parameters:
     :width 
       The width of the like box, in pixel. Default: 450.
