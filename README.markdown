@@ -3,8 +3,7 @@ Easily generate [facebook opengraph](http://developers.facebook.com/docs/opengra
 
 ### Installation
 From your rails directory
-
-    script/plugin install http://github.com/capotej/has_opengraph.git
+    rails plugin install http://github.com/openmosix/has_opengraph.git
 
 ### Example Usage
 
