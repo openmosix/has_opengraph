@@ -12,7 +12,7 @@ It works only with Rails 3.x (automatically safe_html!), and it supports:
 
 ### Installation
 From your rails directory
-    rails plugin install http://github.com/capotej/has_opengraph.git
+    rails plugin install http://github.com/openmosix/has_opengraph.git
 
 ### Example Usage
 
